@@ -1,5 +1,8 @@
 const amqp = require("amqplib");
+const dotenv = require("dotenv");
+
 const msg = { number: process.argv[2] };
+dotenv.config({ path: "./.env" });
 connect();
 
 async function connect() {

@@ -3,9 +3,8 @@ connect();
 
 async function connect() {
   try {
-    const amqpServer =
-      "amqps://mvlshlqe:GU3VZjgfQrp57J45SxMTLsADHPeyZHcu@lionfish.rmq.cloudamqp.com/mvlshlqe";
     const connection = await amqp.connect(process.env.amqpServer);
+
     const channel = await connection.createChannel();
     await channel.assertQueue("jobs");
     channel.consume("jobs", (message) => {
